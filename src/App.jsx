@@ -1,29 +1,9 @@
 import React from "react";
-import Button from "./Button";
-
+import App_ from './mainApp/App_'
 const App = () => {
-  return (
-    <div>
-      fdsafds
-      <div>
-        <Button primary>Primary</Button>
-      </div>
-      <div>
-        <Button secondary>Secondary</Button>
-      </div>
-      <div>
-        <Button success outline>
-          Success
-        </Button>
-      </div>
-      <div>
-        <Button warning>Warning</Button>
-      </div>
-      <div>
-        <Button danger>Danger</Button>
-      </div>
-    </div>
-  );
+  return <div>
+    <App_ />
+  </div>;
 };
 
 export default App;

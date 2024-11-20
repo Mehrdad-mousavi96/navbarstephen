@@ -1,4 +1,4 @@
-import className from "classnames";
+import classnames from "classnames";
 import React from "react";
 
 const Button = ({
@@ -10,8 +10,11 @@ const Button = ({
   success,
   outline,
   rounded,
+  ...rest
 }) => {
-  const classes = className("px-3 py-1.5 border", {
+
+  console.log(rest)
+  const classes = classnames("items-center flex justify-center py-1.5 border", {
     "border-blue-500 bg-blue-500 text-white": primary,
     "border-gray-500 bg-gray-500 text-white": secondary,
     "border-green-500 bg-green-500 text-white": success,
@@ -27,8 +30,8 @@ const Button = ({
   });
 
   return (
-    <button className={classes}>
-      <div>{children}</div>
+    <button className={classes} {...rest}>
+      <div className="flex">{children}</div>
     </button>
   );
 };
