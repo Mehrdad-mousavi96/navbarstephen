@@ -4,20 +4,23 @@ import Button from "./Button";
 const App = () => {
   return (
     <div>
+      fdsafds
       <div>
-        <Button />
+        <Button primary>Primary</Button>
       </div>
       <div>
-        <Button />
+        <Button secondary>Secondary</Button>
       </div>
       <div>
-        <Button />
+        <Button success outline>
+          Success
+        </Button>
       </div>
       <div>
-        <Button />
+        <Button warning>Warning</Button>
       </div>
       <div>
-        <Button />
+        <Button danger>Danger</Button>
       </div>
     </div>
   );
