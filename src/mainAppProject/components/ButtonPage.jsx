@@ -1,8 +1,7 @@
 import React from "react";
-import Button from "./Button";
-import { FaBell } from "react-icons/fa";
+import Button from "./pages/Button";
 
-const App = () => {
+const ButtonPage = () => {
 
   const handleClick = () => {
     console.log('clicked')
@@ -11,7 +10,6 @@ const App = () => {
     <div>
       <div>
         <Button primary onClick={handleClick}>
-          <FaBell className="bg-red-800" />
           Primary
         </Button>
       </div>
@@ -33,4 +31,5 @@ const App = () => {
   );
 };
 
-export default App;
+export default ButtonPage;
+ButtonPage
