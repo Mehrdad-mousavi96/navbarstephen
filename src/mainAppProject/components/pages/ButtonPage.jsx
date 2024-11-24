@@ -1,11 +1,10 @@
 import React from "react";
-import Button from "./pages/Button";
+import Button from "./Button";
 
 const ButtonPage = () => {
-
   const handleClick = () => {
-    console.log('clicked')
-  }
+    console.log("clicked");
+  };
   return (
     <div>
       <div>
@@ -14,12 +13,12 @@ const ButtonPage = () => {
         </Button>
       </div>
       <div>
-        <Button secondary onMouseEnter={handleClick} onMouseLeave={handleClick}>Secondary</Button>
+        <Button secondary onMouseEnter={handleClick} onMouseLeave={handleClick}>
+          Secondary
+        </Button>
       </div>
       <div>
-        <Button success>
-          Success
-        </Button>
+        <Button success>Success</Button>
       </div>
       <div>
         <Button warning>Warning</Button>
@@ -32,4 +31,4 @@ const ButtonPage = () => {
 };
 
 export default ButtonPage;
-ButtonPage
+ButtonPage;

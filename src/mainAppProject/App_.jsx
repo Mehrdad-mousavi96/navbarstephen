@@ -1,12 +1,12 @@
-import React from 'react'
-import ButtonPage from './components/ButtonPage'
+import React from "react";
+import DropDown from "./components/pages/DropDown";
 
 const App_ = () => {
   return (
     <div>
-      <ButtonPage />
+      <DropDown />
     </div>
-  )
-}
+  );
+};
 
-export default App_
+export default App_;

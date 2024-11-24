@@ -1,9 +1,10 @@
-import React from "react";
-import App_ from './mainAppProject/App_'
+import App_ from "./mainAppProject/App_";
+
+
 const App = () => {
-  return <div>
-    <App_ />
-  </div>;
+  return (
+      <App_ />
+  );
 };
 
 export default App;
