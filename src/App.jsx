@@ -1,9 +1,12 @@
 import App_ from "./mainAppProject/App_";
+import {NavigationProvider} from "./mainAppProject/context/navigation.jsx";
 
 
 const App = () => {
   return (
-      <App_ />
+      <NavigationProvider >
+        <App_ />
+      </NavigationProvider>
   );
 };
 

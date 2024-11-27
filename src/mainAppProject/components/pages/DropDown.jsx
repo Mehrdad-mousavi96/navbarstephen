@@ -1,48 +1,65 @@
-import React, { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import Panel from "../Panel";
 
 const options = [
   { label: "Red", value: "red" },
   { label: "Green", value: "green" },
   { label: "Blue", value: "blue" },
 ];
-// TODO: main component
+
 const DropDown = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [selection, setSelection] = useState(null);
 
-  const handleSelect = (option) => {
-    setSelection(option);
-  };
+  const divEl = useRef();
+
+  useEffect(() => {
+    const handler = (event) => {
+      if (!divEl.current) {
+        return;
+      }
+      if (!divEl.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener("click", handler, true);
+  }, []);
 
   const handleClick = () => {
     setIsOpen(!isOpen);
   };
 
-  const handleOptionClick = (option) => {
+  const handleClickOption = (option) => {
     setIsOpen(false);
-    handleSelect(option);
+    setSelection(option);
   };
 
-  // FIXME: renderedOption
-  const renderedOption = options.map((option) => {
+  const renderedItems = options.map((option) => {
     return (
-      <div key={option.value} onClick={() => handleOptionClick(option)}>
-        {option.label}
+      <div
+        className="hover:bg-sky-200 cursor-pointer w-24 grid items-center justify-center"
+        key={option.label}
+      >
+        <div onClick={() => handleClickOption(option)}>{option.label}</div>
       </div>
     );
   });
 
-  let content = "Select...";
-  if (selection) {
-    content = selection.label;
-  }
-
   return (
-    <div>
-      <div onClick={handleClick}>
-        <b>{content}</b>
-      </div>
-      {isOpen && renderedOption}
+    <div ref={divEl} className="w-24 relative m-4">
+      <Panel
+        onClick={handleClick}
+        className="cursor-pointer flex justify-between items-center"
+      >
+        <b>{selection?.label || "Select..."}</b>
+        {!isOpen && "⧨"}
+      </Panel>
+
+      {isOpen && (
+        <Panel className="absolute top-full grid justify-center">
+          {renderedItems}
+        </Panel>
+      )}
     </div>
   );
 };
