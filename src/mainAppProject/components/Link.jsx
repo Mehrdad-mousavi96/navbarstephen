@@ -1,17 +1,24 @@
-import React, { useContext } from "react";
-import NavigationContext from "../context/navigation";
+import classNames from "classnames";
+import { useNavigation } from "../hooks/customHook";
 
 const Link = ({ to, children }) => {
-  const { navigate } = useContext(NavigationContext);
+  const { navigate } = useNavigation();
+
+  const classes = classNames(
+    "text-blue-500 m-2 border p-2 text-teal-900 hover:bg-teal-900 hover:text-white hover:transition-all"
+  );
 
   const handleClick = (event) => {
     event.preventDefault();
 
+    if (event.metaKey || event.crtlKey) {
+      return;
+    }
     navigate(to);
   };
 
   return (
-    <a className="border p-2 m-2" onClick={handleClick}>
+    <a className={classes} onClick={handleClick} href={to}>
       {children}
     </a>
   );

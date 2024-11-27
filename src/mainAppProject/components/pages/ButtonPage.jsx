@@ -2,18 +2,16 @@ import React from "react";
 import Button from "./Button";
 
 const ButtonPage = () => {
-  const handleClick = () => {
-    console.log("clicked");
-  };
+  
   return (
     <div>
       <div>
-        <Button primary onClick={handleClick}>
+        <Button primary >
           Primary
         </Button>
       </div>
       <div>
-        <Button secondary onMouseEnter={handleClick} onMouseLeave={handleClick}>
+        <Button secondary  >
           Secondary
         </Button>
       </div>

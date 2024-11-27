@@ -2,18 +2,22 @@ import Link from "./components/Link";
 import Accordion from "./components/pages/Accordion";
 import DropDown from "./components/pages/DropDown";
 import Route from "./components/Route";
+import Sidebar from "./components/Sidebar";
+import ButtonPage from "./components/pages/ButtonPage";
 
 const App = () => {
   return (
     <div className="p-2">
-      <Link to={"/accordion"}>Go to Accordion</Link>
-      <Link to={"/dropdown"}>Go to DropDown</Link>
+      <Sidebar />
       <div>
         <Route path={"/accordion"}>
           <Accordion />
         </Route>
-        <Route path={"/dropdown"}>
+        <Route path={"/"}>
           <DropDown />
+        </Route>{" "}
+        <Route path={"/buttons"}>
+          <ButtonPage />
         </Route>
       </div>
     </div>
