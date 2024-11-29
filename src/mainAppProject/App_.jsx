@@ -1,9 +1,10 @@
-import Link from "./components/Link";
 import Accordion from "./components/pages/Accordion";
 import DropDown from "./components/pages/DropDown";
 import Route from "./components/Route";
 import Sidebar from "./components/Sidebar";
 import ButtonPage from "./components/pages/ButtonPage";
+import ModalPage from "./components/pages/ModalPage";
+import TablePage from "./components/pages/TablePage";
 
 const App = () => {
   return (
@@ -18,6 +19,12 @@ const App = () => {
         </Route>{" "}
         <Route path={"/buttons"}>
           <ButtonPage />
+        </Route>
+        <Route path={"/modal"}>
+          <ModalPage />
+        </Route>{" "}
+        <Route path={"/table"}>
+          <TablePage />
         </Route>
       </div>
     </div>

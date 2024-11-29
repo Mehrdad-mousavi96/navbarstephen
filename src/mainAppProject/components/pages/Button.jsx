@@ -15,7 +15,7 @@ const Button = ({
   const classes = classnames(
     "items-center flex justify-center py-1 px-3 border-2",
     {
-      "border-blue-500 bg-blue-500 text-white": primary,
+      "border-blue-500 bg-blue-500 text-black": primary,
       "border-gray-500 bg-gray-500 text-white": secondary,
       "border-green-500 bg-green-500 text-white": success,
       "border-yellow-500 bg-yellow-500 text-white": warning,

@@ -6,6 +6,8 @@ const Sidebar = () => {
     { label: "DropDown", path: "/" },
     { label: "Accordion", path: "/accordion" },
     { label: "Button", path: "/buttons" },
+    { label: "Modal", path: "/modal" },
+    { label: "Table", path: "/table" },
   ];
 
   const renderedLinks = links.map((link) => {
@@ -22,7 +24,7 @@ const Sidebar = () => {
   });
 
   return (
-    <div className="stikcy top-0 overflow-y-scroll flex flex-col">
+    <div className="stikcy top-0 overflow-y-scroll flex flex-col  ">
       {renderedLinks}
     </div>
   );

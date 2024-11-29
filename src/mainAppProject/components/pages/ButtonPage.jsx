@@ -29,4 +29,4 @@ const ButtonPage = () => {
 };
 
 export default ButtonPage;
-ButtonPage;
+
