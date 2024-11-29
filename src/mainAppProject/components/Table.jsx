@@ -1,32 +1,40 @@
 import React from "react";
 
 const Table = ({ data, config }) => {
-  const renderedHeaders = config.map((columnConfig) => {
-    return <th className="p-4">{columnConfig.label}</th>;
+  // Head
+  const renderedHeaders = config.map((column) => {
+    return (
+      <th key={column.label} className="p-4">
+        {column.label}
+      </th>
+    );
   });
 
+  // Body
   const renderedRows = data.map((fruit) => {
+    const renderedCells = config.map((column) => {
+      return (
+        <td key={column.label} className={`p-2 ${column.render(fruit)}`}>
+          {column.render(fruit)}
+        </td>
+      );
+    });
+
     return (
-      <tr key={fruit.name} className="border-b">
-        <td className="">{fruit.name}</td>
-
-        <td className=" flex justify-center p-4">
-          <div className={`p-2 ${fruit.color} w-2`}></div>
-        </td>
-
-        <td className="pl-4">
-          <b>{fruit.score}</b>
-        </td>
+      <tr key={fruit.name} className="border-b ">
+        {renderedCells}
       </tr>
     );
   });
 
   return (
     <table className="table-auto border-spacing-2">
+      {/* Head */}
       <thead>
         <tr className="border-b-2 ">{renderedHeaders}</tr>
       </thead>
 
+      {/* Body */}
       <tbody>{renderedRows}</tbody>
     </table>
   );
