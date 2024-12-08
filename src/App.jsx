@@ -1,12 +1,11 @@
-import App_ from "./mainAppProject/App_";
-import {NavigationProvider} from "./mainAppProject/context/navigation.jsx";
-
+import React from "react";
+import MainApp from "./carsProject/MainApp";
 
 const App = () => {
   return (
-      <NavigationProvider >
-        <App_ />
-      </NavigationProvider>
+    <div>
+      <MainApp />
+    </div>
   );
 };
 

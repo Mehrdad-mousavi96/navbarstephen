@@ -1,8 +1,11 @@
-import React from "react";
+import { Fragment } from "react";
+
 
 const Table = ({ data, config, keyFn }) => {
-  // Head
   const renderedHeaders = config.map((column) => {
+
+    if (column.header) return <Fragment key={column.label}>{column.header()}</Fragment>
+
     return (
       <th key={column.label} className="p-4">
         {column.label}
@@ -10,14 +13,14 @@ const Table = ({ data, config, keyFn }) => {
     );
   });
 
-  // Body
   const renderedRows = data.map((rowData) => {
+
     const renderedCells = config.map((column) => {
       return <td key={column.label}>{column.render(rowData)}</td>;
     });
 
     return (
-      <tr key={keyFn(rowData)} className="border-b ">
+      <tr key={keyFn(rowData)} className="border-b">
         {renderedCells}
       </tr>
     );
@@ -25,12 +28,9 @@ const Table = ({ data, config, keyFn }) => {
 
   return (
     <table className="table-auto border-spacing-2">
-      {/* Head */}
       <thead>
-        <tr className="border-b-2 ">{renderedHeaders}</tr>
+        <tr className="border-b-2">{renderedHeaders}</tr>
       </thead>
-
-      {/* Body */}
       <tbody>{renderedRows}</tbody>
     </table>
   );
