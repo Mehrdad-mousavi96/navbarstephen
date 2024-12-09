@@ -1,58 +1,42 @@
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { removeCar } from "../store";
 
 const CarList = () => {
+  const dispatch = useDispatch();
+
   const { cars, name } = useSelector(
-    ({ formStore, carsStore: { cars, searchTerm } }) => {
-      const filteredCars = cars.filter((car) =>
+    ({ stateCars: { data, searchTerm }, stateForm }) => {
+      const filteredCars = data.filter((car) =>
         car.name.toLowerCase().includes(searchTerm.toLowerCase())
       );
 
       return {
         cars: filteredCars,
-        name: formStore.name,
+        name: stateForm.name,
       };
     }
   );
 
-  const dispatch = useDispatch();
-
-  const handleCarDelete = (car) => {
-    dispatch(removeCar(car.id));
-  };
+  const handleCarDelete = (car) => dispatch(removeCar(car.id));
 
   const renderedCars = cars.map((car) => {
-    // DECIDE IF THIS CAR SHOULD BE BOLD
-    // state.form.name
     const bold = name && car.name.toLowerCase().includes(name.toLowerCase());
 
     return (
       <div
         key={car.id}
-        className={`flex justify-center items-center ${bold && "font-bold"}`}
+        className="flex justify-center items-center text-lg border-2 border-black rounded-lg my-2"
       >
-        <p>
+        <p className={`mx-52 ${bold && 'font-bold'}`}>
           {car.name} - ${car.cost}
         </p>
-        <button
-          onClick={() => handleCarDelete(car)}
-          className="mx-4 p-1 hover:text-white hover:bg-black"
-        >
-          X
-        </button>
+        <button onClick={() => handleCarDelete(car)}>Delete</button>
       </div>
     );
   });
 
-  return (
-    <div className="my-2">
-      <hr />
-      {"<CarList>"}
-      {renderedCars}
-      {"</Carlist>"}
-      <hr />
-    </div>
-  );
+  return <div>{renderedCars}</div>;
 };
 
 export default CarList;

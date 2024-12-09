@@ -12,6 +12,7 @@
   "dependencies": {
     "@faker-js/faker": "^9.3.0",
     "@reduxjs/toolkit": "^2.3.0",
+    "bulma": "^1.0.2",
     "classnames": "^2.5.1",
     "faker": "^6.6.6",
     "immer": "^10.1.1",

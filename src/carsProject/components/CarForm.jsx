@@ -4,20 +4,10 @@ import { addCar, changeCost, changeName } from "../store";
 const CarForm = () => {
   const dispatch = useDispatch();
 
-  const { name, cost } = useSelector((state) => ({
-    name: state.formStore.name,
-    cost: state.formStore.cost,
+  const { name, cost } = useSelector(({ stateForm }) => ({
+    name: stateForm.name,
+    cost: stateForm.cost,
   }));
-  
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    dispatch(
-      addCar({
-        name,
-        cost,
-      })
-    );
-  };
 
   const handleNameChange = (event) => dispatch(changeName(event.target.value));
 
@@ -26,43 +16,49 @@ const CarForm = () => {
     dispatch(changeCost(carCost));
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    dispatch(
+      addCar({
+        name,
+        cost,
+      })
+    );
+  };
 
   return (
-    <>
-      {"<CarForm>"}
-      <div className="border-2 rounded-md border-black p-2 m-4 flex justify-evenly items-center">
-        <form
-          onSubmit={handleSubmit}
-          className="flex justify-center items-center rounded-md"
-        >
+    <div className="flex justify-between items-center my-4">
+      <form onSubmit={handleSubmit}>
+        <div className="flex ">
           <div>
-            <label>Name</label>
+            <label htmlFor="">Name</label>
             <input
-              className="border-2 border-black m-2 rounded-md"
               value={name}
               onChange={handleNameChange}
+              placeholder="enter car name"
+              className="border-2 mx-2 border-black rounded-lg text-center px-1 "
             />
           </div>
 
           <div>
-            <label>Cost</label>
+            <label htmlFor="">Cost</label>
             <input
-              className="border-2 border-black m-2 justify-center items-center rounded-md"
-              type="number"
               value={cost || ""}
               onChange={handleCostChange}
+              type="number"
+              className="border-2 mx-2 border-black rounded-lg text-center px-1"
             />
           </div>
 
           <div>
-            <button className=" border-2 p-1 border-black rounded-lg hover:bg-black hover:text-white cursor-pointer">
+            <button className="border-2 rounded-lg border-black p-0.5 hover:bg-black hover:text-white cursor-pointer">
               Submit
             </button>
           </div>
-        </form>
-      </div>
-      {"</CarForm>"}
-    </>
+        </div>
+      </form>
+    </div>
   );
 };
 
